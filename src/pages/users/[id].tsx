@@ -1,32 +1,29 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import React, { ReactElement } from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
-import Layout from '../../components/Layout'
-import ListDetail from '../../components/ListDetail'
+import Layout from 'components/Layout'
+import ListDetail from 'components/ListDetail'
+import { User } from 'interfaces'
+import { sampleUserData } from 'utils/sample-data'
 
 type Props = {
-  item?: User
+  item: User
   errors?: string
 }
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const StaticPropsDetail = ({ item, errors = '' }: Props): ReactElement => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
         <p>
-          <span style={{ color: 'red' }}>Error:</span> {errors}
+          <span style={{ color: 'red' }}>{'Error:'}</span> {errors}
         </p>
       </Layout>
     )
   }
 
   return (
-    <Layout
-      title={`${
-        item ? item.name : 'User Detail'
-      } | Next.js + TypeScript Example`}
-    >
+    <Layout title={`${item ? item.name : 'User Detail'} | Next.js + TypeScript Example`}>
       {item && <ListDetail item={item} />}
     </Layout>
   )
@@ -34,9 +31,9 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 
 export default StaticPropsDetail
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
   // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
+  const paths = sampleUserData.map(user => ({
     params: { id: user.id.toString() },
   }))
 
@@ -48,14 +45,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = ({ params }) => {
   try {
     const id = params?.id
-    const item = sampleUserData.find((data) => data.id === Number(id))
+    const item = sampleUserData.find(data => data.id === Number(id))
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } }
-  } catch (err) {
-    return { props: { errors: err.message } }
+  } catch (e) {
+    return { props: {} }
   }
 }
