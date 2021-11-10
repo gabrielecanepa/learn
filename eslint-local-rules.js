@@ -4,8 +4,8 @@ const moduleVisitor = require('eslint-module-utils/moduleVisitor').default
 module.exports = {
   'no-relative-parent-imports': {
     create(context) {
-      const myPath = context.getFilename()
-      if (myPath === '<text>') return {} // can't check a non-file
+      const path = context.getFilename()
+      if (path === '<text>') return {} // can't check a non-file
 
       const checkSourceValue = node => {
         if (!node.value.includes('../')) return
@@ -14,7 +14,6 @@ module.exports = {
           node,
         })
       }
-
       return moduleVisitor(checkSourceValue, context.options[0])
     },
     meta: {

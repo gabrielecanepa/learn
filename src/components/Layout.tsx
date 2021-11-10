@@ -19,6 +19,7 @@ const Layout = ({ children, title }: Props): ReactElement => (
         <Link href="/">{'Home'}</Link>
         <Link href="/about">{'About'}</Link>
         <Link href="/users">{'Users List'}</Link>
+        <Link href="/example">{'Just an example'}</Link>
         {'|'}
         <a href="/api/users">{'Users API'}</a>
       </nav>
