@@ -11,7 +11,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        moduleDirectory: ['node_modules', 'src/'],
+        moduleDirectory: ['node_modules', 'src'],
       },
     },
     react: {
@@ -35,6 +35,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/all',
     'plugin:react-hooks/recommended',
+    'plugin:@next/next/recommended',
     'prettier',
   ],
   rules: {

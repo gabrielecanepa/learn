@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Layout = ({ children, title }: Props): ReactElement => (
-  <div>
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -17,11 +17,14 @@ const Layout = ({ children, title }: Props): ReactElement => (
     <header>
       <nav>
         <Link href="/">{'Home'}</Link>
+        {' | '}
         <Link href="/about">{'About'}</Link>
+        {' | '}
         <Link href="/users">{'Users List'}</Link>
+        {' | '}
         <Link href="/example">{'Just an example'}</Link>
-        {'|'}
-        <a href="/api/users">{'Users API'}</a>
+        {' | '}
+        <Link href="/api/users">{'Users API'}</Link>
       </nav>
     </header>
     {children}
@@ -29,7 +32,7 @@ const Layout = ({ children, title }: Props): ReactElement => (
       <hr />
       <span>{"I'm here to stay (Footer)"}</span>
     </footer>
-  </div>
+  </>
 )
 
 export default Layout
