@@ -27,7 +27,7 @@ module.exports = {
     process: true,
     Promise: true,
   },
-  plugins: ['import', 'jsx-a11y', 'local-rules', 'prettier', 'react', 'react-hooks', 'sort-imports-es6-autofix'],
+  plugins: ['import', 'jsx-a11y', 'prettier', 'react', 'react-hooks', 'sort-imports-es6-autofix'],
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
@@ -44,6 +44,17 @@ module.exports = {
     'arrow-parens': [2, 'as-needed'],
     'max-lines': 2,
     'no-console': 1,
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: ['.*/'],
+            message: 'Relative imports from parent directories are not allowed, use absolute paths instead.',
+          },
+        ],
+      },
+    ],
     'no-shadow': 0,
     'no-use-before-define': 0,
     'no-var': 2,
@@ -53,7 +64,7 @@ module.exports = {
     quotes: [2, 'single', { avoidEscape: true }],
     'sort-keys': 0,
     'sort-vars': [2, { ignoreCase: false }],
-    // Plugins
+    // Import
     'import/extensions': [
       2,
       'ignorePackages',
@@ -65,9 +76,18 @@ module.exports = {
     'import/namespace': [2, { allowComputed: true }],
     'import/no-anonymous-default-export': [2, { allowObject: true }],
     'import/no-unresolved': 2,
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      2,
+      {
+        ignoreCase: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['single', 'multiple', 'all', 'none'],
+      },
+    ],
+    // A11y
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/no-onchange': 0,
-    'local-rules/no-relative-parent-imports': 2,
+    // Prettier
     'prettier/prettier': [
       2,
       {
@@ -79,6 +99,7 @@ module.exports = {
         arrowParens: 'avoid',
       },
     ],
+    // React
     'react/forbid-component-props': 0,
     'react/forbid-prop-types': 0,
     'react/function-component-definition': [
@@ -120,14 +141,6 @@ module.exports = {
     ],
     'react-hooks/exhaustive-deps': 0,
     'react-hooks/rules-of-hooks': 2,
-    'sort-imports-es6-autofix/sort-imports-es6': [
-      2,
-      {
-        ignoreCase: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['single', 'multiple', 'all', 'none'],
-      },
-    ],
   },
   overrides: [
     // TypeScript
