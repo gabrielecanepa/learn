@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import Layout from 'components/Layout'
-import ListDetail from 'components/ListDetail'
+import Layout from 'components/layout'
+import ListDetail from 'components/list-detail'
 import { User } from 'interfaces'
 import { sampleUserData } from 'utils/sample-data'
 

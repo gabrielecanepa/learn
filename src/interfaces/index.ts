@@ -4,6 +4,6 @@
 //
 // import { User } from 'path/to/interfaces';
 
-import User from './user'
+import User from 'interfaces/user'
 
 export type { User }

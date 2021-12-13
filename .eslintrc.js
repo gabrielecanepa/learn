@@ -42,6 +42,7 @@ module.exports = {
     // Base
     'arrow-body-style': [2, 'as-needed'],
     'arrow-parens': [2, 'as-needed'],
+    camelcase: [2, { properties: 'always' }],
     'max-lines': 2,
     'no-console': 1,
     'no-restricted-imports': [

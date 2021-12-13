@@ -2,8 +2,8 @@ import Link from 'next/link'
 import React, { ReactElement } from 'react'
 import { GetStaticProps } from 'next'
 
-import Layout from 'components/Layout'
-import List from 'components/List'
+import Layout from 'components/layout'
+import List from 'components/list'
 import { User } from 'interfaces'
 import { sampleUserData } from 'utils/sample-data'
 

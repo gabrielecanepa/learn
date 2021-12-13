@@ -1,4 +1,4 @@
-import ListItem from './ListItem'
+import ListItem from 'components/list-item'
 import React, { ReactElement } from 'react'
 import { User } from 'interfaces'
 
