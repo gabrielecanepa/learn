@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactElement, ReactNode } from 'react'
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/react'
 
 type Props = {
   children: ReactNode
@@ -8,7 +9,7 @@ type Props = {
 }
 
 const Layout = ({ children, title }: Props): ReactElement => (
-  <>
+  <ThemeProvider>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -32,7 +33,7 @@ const Layout = ({ children, title }: Props): ReactElement => (
       <hr />
       <span>{"I'm here to stay (Footer)"}</span>
     </footer>
-  </>
+  </ThemeProvider>
 )
 
 export default Layout

@@ -30,8 +30,8 @@ module.exports = {
   plugins: ['import', 'jsx-a11y', 'prettier', 'react', 'react-hooks', 'sort-imports-es6-autofix'],
   extends: [
     'eslint:recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
     'plugin:react/all',
     'plugin:react-hooks/recommended',
@@ -39,7 +39,6 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    // Base
     'arrow-body-style': [2, 'as-needed'],
     'arrow-parens': [2, 'as-needed'],
     camelcase: [2, { properties: 'always' }],
@@ -50,7 +49,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['.*/'],
+            group: ['..*/'],
             message: 'Relative imports from parent directories are not allowed, use absolute paths instead.',
           },
         ],
